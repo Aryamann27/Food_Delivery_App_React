@@ -1,0 +1,47 @@
+Link{
+    text-decoration: none;
+}
+
+.card-container {
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 1rem;
+  }
+  
+  .card {
+    margin: 1rem;
+    background-color: #f0f0f0;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+  
+  /* Media queries for responsive layout */
+  @media (max-width: 768px) {
+    .card {
+      flex-basis: calc(50% - 2rem); /* Adjust the width to 50% for smaller screens */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .card {
+      flex-basis: 100%; /* Adjust the width to 100% for screens smaller than 480px */
+    }
+    
+    .card-container {
+      justify-content: flex-start; /* Align cards to the start of the container in a column */
+    }
+}
+
+.carousel-img{
+    height: 600px;
+    width: 800px;
+}
+.home-background{
+    background-image: url('./images/homeBackground.jpeg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 650px;
+    width: 100%;
+}
+
