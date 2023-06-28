@@ -3,7 +3,7 @@ const app = express()
 const port = 5000
 const cors = require('cors');
 const mongoose = require('mongoose');
-const mongoURI = 'mongodb+srv://aryaman0527:test123@cluster0.pgpirgz.mongodb.net/food-items?retryWrites=true&w=majority'
+const mongoURI = 'mongodb://aryaman0527:test123@ac-ffli8hj-shard-00-00.pgpirgz.mongodb.net:27017,ac-ffli8hj-shard-00-01.pgpirgz.mongodb.net:27017,ac-ffli8hj-shard-00-02.pgpirgz.mongodb.net:27017/food-app?ssl=true&replicaSet=atlas-9goetq-shard-0&authSource=admin&retryWrites=true&w=majority'
 
 
 app.use(express.json())

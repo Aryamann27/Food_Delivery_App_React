@@ -12,12 +12,18 @@ const userSchema = new Schema({
     },
     email:{
         type:String,
-        required:true
+        required:true,
+        unique:true
     },
     password:{
         type:String,
         required:true
+    },
+    cart:{
+        type:mongoose.Types.ObjectId,
+        ref:'Cart'
     }
 });
 
-module.exports = mongoose.model('user', userSchema);
+const User = mongoose.model('User', userSchema);
+module.exports = User;
