@@ -6,9 +6,8 @@ const jwt = require('jsonwebtoken');
 const validator = require('validator');
 
 router.post('/signup', async(req, res)=>{
+    const {name, location, email, password} = req.body;
     try{
-        const {name, location, email, password} = req.body;
-
         // Validate user data
         if (!validator.isEmail(email)) {
         return res.status(400).json({ message: 'Invalid email address' });
@@ -33,18 +32,17 @@ router.post('/signup', async(req, res)=>{
     await newUser.save();
     
     const token = jwt.sign({userId:newUser._id}, "mysecretkey");
-
     res.json({mssg:"Signed up successfully!", token});
-    }catch(err){
+    }
+    catch(err){
         res.status(500).json({mssg:"Signing up failed!"});
     }
 });
 
 // logging in
 router.post('/login', async(req, res)=>{
+    const {email, password} = req.body;
     try{
-        const {email, password} = req.body;
-
         if (!validator.isEmail(email)) {
             return res.status(400).json({ message: 'Invalid email address' });
         }

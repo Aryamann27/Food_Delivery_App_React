@@ -41,7 +41,53 @@ Link{
     background-image: url('./images/homeBackground.jpeg');
     background-repeat: no-repeat;
     background-size: cover;
-    height: 650px;
+    height: 550px;
     width: 100%;
 }
 
+div.error {
+  padding: 10px;
+  background: #ffefef;
+  border: 1px solid var(--error);
+  color: var(--error);
+  border-radius: 4px;
+  margin: 20px 0;
+}
+
+.home-card-container{
+  flex-wrap: wrap;
+}
+
+@media screen and (max-width: 768px) {
+  .home-card {
+    flex-basis: 100%; /* Set width to 100% on smaller screens */
+    margin-bottom: 20px; /* Add margin to create space between the cards */
+  }
+}
+
+li a{
+  text-decoration: none;
+}
+
+@media screen and (max-width: 768px) {
+  .items-card {
+    flex-basis: 100%; /* Set width to 100% on smaller screens */
+    margin-bottom: 20px; /* Add margin to create space between the cards */
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .login-alert {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .login-alert {
+    font-size: 12px;
+  }
+}
+
+Link:hover{
+  text-decoration: none;
+}

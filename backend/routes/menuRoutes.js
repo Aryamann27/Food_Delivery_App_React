@@ -11,11 +11,14 @@ router.get('/', (req, res)=>{
 
 // post request to add items into the db
 router.post('/', (req, res)=>{
-    const {name, price} = req.body;
+    const {name, price, category, deitCat, imgUrl} = req.body;
 
     const newMenuItem = new MenuItem({
         name,
-        price
+        price,
+        category,
+        deitCat,
+        imgUrl
     });
     
     newMenuItem.save()

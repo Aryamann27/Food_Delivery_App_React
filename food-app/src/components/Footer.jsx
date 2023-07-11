@@ -5,6 +5,8 @@ import {
   MDBCol,
   MDBRow
 } from 'mdb-react-ui-kit';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFacebook } from '@fortawesome/free-solid-svg-icons';
 
 export default function Footer() {
   return (
@@ -12,108 +14,98 @@ export default function Footer() {
       <MDBContainer className='p-4'>
         <MDBRow>
           <MDBCol lg='3' md='6' className='mb-4 mb-md-0'>
-            <h5 className='text-uppercase'>Links</h5>
+            <h5>About Food-Express</h5>
 
             <ul className='list-unstyled mb-0'>
               <li>
                 <a href='#!' className='text-dark'>
-                  Link 1
+                  Who We Are
                 </a>
               </li>
               <li>
                 <a href='#!' className='text-dark'>
-                  Link 2
+                  Blog
                 </a>
               </li>
               <li>
                 <a href='#!' className='text-dark'>
-                  Link 3
+                  Work With Us
                 </a>
               </li>
               <li>
                 <a href='#!' className='text-dark'>
-                  Link 4
+                  Contact Us
                 </a>
               </li>
             </ul>
           </MDBCol>
 
           <MDBCol lg='3' md='6' className='mb-4 mb-md-0'>
-            <h5 className='text-uppercase mb-0'>Links</h5>
-
-            <ul className='list-unstyled'>
-              <li>
-                <a href='#!' className='text-dark'>
-                  Link 1
-                </a>
-              </li>
-              <li>
-                <a href='#!' className='text-dark'>
-                  Link 2
-                </a>
-              </li>
-              <li>
-                <a href='#!' className='text-dark'>
-                  Link 3
-                </a>
-              </li>
-              <li>
-                <a href='#!' className='text-dark'>
-                  Link 4
-                </a>
-              </li>
-            </ul>
-          </MDBCol>
-
-          <MDBCol lg='3' md='6' className='mb-4 mb-md-0'>
-            <h5 className='text-uppercase'>Links</h5>
+            <h5>For Restaurant</h5>
 
             <ul className='list-unstyled mb-0'>
               <li>
                 <a href='#!' className='text-dark'>
-                  Link 1
+                  Parten With Us
                 </a>
               </li>
               <li>
                 <a href='#!' className='text-dark'>
-                  Link 2
-                </a>
-              </li>
-              <li>
-                <a href='#!' className='text-dark'>
-                  Link 3
-                </a>
-              </li>
-              <li>
-                <a href='#!' className='text-dark'>
-                  Link 4
+                  Apps For You
                 </a>
               </li>
             </ul>
           </MDBCol>
 
           <MDBCol lg='3' md='6' className='mb-4 mb-md-0'>
-            <h5 className='text-uppercase mb-0'>Links</h5>
+            <h5 className='text-uppercase mb-0'>Learn More</h5>
 
             <ul className='list-unstyled'>
               <li>
                 <a href='#!' className='text-dark'>
-                  Link 1
+                  Privacy
                 </a>
               </li>
               <li>
                 <a href='#!' className='text-dark'>
-                  Link 2
+                  Security
                 </a>
               </li>
               <li>
                 <a href='#!' className='text-dark'>
-                  Link 3
+                  Terms
+                </a>
+              </li>
+            </ul>
+          </MDBCol>
+
+          <MDBCol lg='3' md='6' className='mb-4 mb-md-0'>
+            <h5 className='text-uppercase mb-0'>Social Links</h5>
+
+            <ul className='list-unstyled'>
+              <li>
+                <a href='#!' className='text-dark'>
+                  Instagram 
                 </a>
               </li>
               <li>
                 <a href='#!' className='text-dark'>
-                  Link 4
+                  Facebook <FontAwesomeIcon icon="fa-brands fa-facebook" />
+                </a>
+              </li>
+              <li>
+                <a href='#!' className='text-dark'>
+                  Twitter
+                </a>
+              </li>
+              <li>
+                <a href='#!' className='text-dark'>
+                  LinkedIn
+                </a>
+              </li>
+              <li>
+                <a href='#!' className='text-dark'>
+                  Youtube
                 </a>
               </li>
             </ul>
@@ -123,9 +115,7 @@ export default function Footer() {
 
       <div className='text-center p-3' style={{ backgroundColor: 'rgba(0, 0, 0, 0.2)' }}>
         &copy; {new Date().getFullYear()} Copyright:{' '}
-        <a className='text-dark' href='https://mdbootstrap.com/'>
-          MDBootstrap.com
-        </a>
+        <i>Food-Express</i>
       </div>
     </MDBFooter>
   );

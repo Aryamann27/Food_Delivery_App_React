@@ -1,18 +1,33 @@
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import {default as menuImg1} from '../images/menu/menu_img1.jpg'
 import '../App.css'
+import { useItemsContext } from '../hooks/useItemsContext';
+import {default as Veg} from '../images/veg_icon.png'
+import {default as NonVeg} from '../images/nonVeg_icon.png'
+import { useState, useEffect } from 'react';
 
-function CardComp() {
+function CardComp({item}) {
+
+  const {dispatch} = useItemsContext()
+  const [isVeg, setIsVeg] = useState(true);
+
+  useEffect(() => {
+    if (item.deitCat === "Non-Veg") {
+      setIsVeg(false);
+    }
+  }, [item.deitCat]);
+
   return (
-    <Card className='card' style={{ width: '18rem'}}>
-      <Card.Img variant="top" src={menuImg1} />
+    <Card className='card items-card' style={{ width: '20rem'}}>
+      <Card.Img style={{height:"250px", width:"100%"}} variant="top" src={item.imgUrl} />
       <Card.Body>
-        <Card.Title>Card Title</Card.Title>
-        <Card.Text>
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </Card.Text>
+
+        <div style={{display:"flex", justifyContent:"space-between"}}>
+        <Card.Title>{item.name}</Card.Title>
+        {
+          isVeg?(<img style={{width:"25px", height:"25px"}} src={Veg} />):(<img style={{width:"25px", height:"25px"}} src={NonVeg} />)
+        }
+        </div>
         <p>
         <select className='m-2 bg-light w-25 h-10 rounded'>
             {
@@ -23,19 +38,10 @@ function CardComp() {
                 })
             }
         </select>
-        
-        <select className='m-2 h-10 w-50 rounded'>
-            <option value="half">
-                Half
-            </option>
-            <option value="full">
-                Full
-            </option>
-        </select>
         </p>
 
         <p style={{fontSize:"1.25rem", fontWeight:"500"}}>
-            Price :
+            Price : Rs.{item.price}
         </p>
         <Button variant="primary">Add to Cart</Button>
       </Card.Body>

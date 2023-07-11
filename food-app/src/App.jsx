@@ -6,6 +6,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import LoginPage from "./Pages/Login";
 import Footer from "./components/Footer";
 import SignupPage from "./Pages/Signup";
+import Delivery from "./Pages/Delivery";
+import Dining from "./Pages/Dining";
 function App() {
   return (
     <Router>
@@ -16,6 +18,8 @@ function App() {
         <Route path='/home' element={<Home />} />
         <Route path='/login' element={<LoginPage />} />
         <Route path='/signup' element={<SignupPage />} />
+        <Route path='/delivery' element={<Delivery />} />
+        <Route path='/dining' element={<Dining />} />
       </Routes>
       <Footer />
       </div>

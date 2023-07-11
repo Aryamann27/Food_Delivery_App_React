@@ -1,16 +1,29 @@
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
-import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { Link } from 'react-router-dom';
+import { useLogout } from '../hooks/useLogout';
+import { useAuthContext } from '../hooks/useAuthContext';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import LoginPage from '../Pages/Login';
 
 function NAVbar() {
+  
+  const {logout} = useLogout()
+  const {user} = useAuthContext()
+
+  const handleClick = () =>{
+      logout()
+      alert('You have been logged out!');
+  }
+
   return (
     <Navbar expand="lg" bg='primary'>
       <Container fluid>
         <Link to='/'>
-        <Navbar.Brand className='fst-italic' style={{color:"white", fontSize:"2rem"}}>Food-Express</Navbar.Brand></Link>
+        <Navbar.Brand className='fst-italic comp-name' style={{color:"white", fontSize:"2rem"}}>Food-Express</Navbar.Brand></Link>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav
@@ -18,11 +31,26 @@ function NAVbar() {
             style={{ maxHeight: '100px' }}
             navbarScroll
           >
-            <Link to='/' style={{color:"white"}} className='nav-link'>Home</Link>
-            <Link to='/' style={{color:"white"}} className='nav-link'>Home</Link>     
+            <div style={{marginTop:"0.25rem", display:"flex"}}>
+            <Link to='/delivery' style={{color:"white", fontSize:"1.2rem", marginLeft:"1.4rem"}} className='nav-link'>DELIVERY</Link>
+            <Link to='/dining' style={{color:"white", fontSize:"1.2rem", marginLeft:"1.5rem"}} className='nav-link'>DINING OUT</Link>
+            </div>
           </Nav>
-            <Link to='/login'><Button variant="outline-light">Login</Button></Link>
-            <Link to='/signup' style={{marginLeft:"1rem"}}><Button variant="outline-light">Signup</Button></Link>
+
+          
+
+            {user && (
+              <div style={{marginTop:"0.25rem", display:"flex"}}>
+                <Link><span style={{marginLeft:"1rem", color:"white", marginRight:"1.5rem"}} variant="outline-light"><FontAwesomeIcon style={{fontSize:"1.7rem", marginTop:"0.25rem"}} icon={faShoppingCart} /></span></Link>
+                <Button onClick={handleClick}  style={{marginLeft:"1rem"}} variant="outline-light">Logout</Button>
+              </div>
+            )}
+
+            {!user && (
+            <div>
+            <Link to='/login'><Button variant="outline-light" style={{fontSize:"1.2rem"}}>Login</Button></Link>
+            <Link to='/signup' style={{marginLeft:"1rem"}}><Button variant="outline-light" style={{fontSize:"1.2rem"}}>Signup</Button></Link></div>
+            )}
         </Navbar.Collapse>
       </Container>
     </Navbar>

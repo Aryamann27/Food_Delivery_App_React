@@ -8,6 +8,18 @@ const menuItemSchema = new mongoose.Schema({
     price:{
         type:Number,
         required:true
+    },
+    category:{
+        type:String,
+        required:true
+    },
+    deitCat:{
+        type:String,
+        required:true
+    },
+    imgUrl:{
+        type:String,
+        required:true
     }
 });
 

@@ -3,15 +3,13 @@ import {
   MDBContainer,
   MDBCol,
   MDBRow,
-  MDBBtn,
-  MDBIcon,
-  MDBInput,
-  MDBCheckbox
+  MDBInput
 }
 from 'mdb-react-ui-kit';
 import {default as Logo} from '../images/food-express-logo.png';
 import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
+import { useSignup } from '../hooks/useSignup';
 
 function SignupPage() {
 
@@ -19,27 +17,14 @@ function SignupPage() {
     const [password, setPassword] = useState("");
     const [name, setName] = useState(" ");
     const [location, setLocation] = useState(" ");
+
+    const {signup, error, isLoading} = useSignup();
     
     const handleSignup = async(e)=>{
         e.preventDefault()
 
-        const response = await fetch('http://127.0.0.1:5000/api/auth/signup', {
-            method:'POST',
-            headers:{
-                'Content-Type': 'application/json'
-            },
-            body:JSON.stringify({name, location, email, password})
-        })
-
-        const json = await response.json();
-
-        if(response.ok){
-          localStorage.setItem('user', JSON.stringify(json));
-          alert('Signed up successfully');
-        }
-        if(!response.ok){
-          alert('Signup failed!');
-        }
+        await signup(name, location, email, password);
+        console.log(name, email, password, location);
     }
 
   return (
@@ -73,8 +58,11 @@ function SignupPage() {
         </div>
 
           <div style={{marginLeft:"18rem"}}>
-          <Button onClick={handleSignup} type='submit' variant="primary" style={{padding:"0.75rem 2rem 0.75rem 2rem", fontSize:"1.5rem"}}>Sign up</Button>
+          <Button disabled={isLoading}
+           onClick={handleSignup} type='submit' variant="primary" style={{padding:"0.75rem 2rem 0.75rem 2rem", fontSize:"1.5rem"}}>Sign up</Button>
           </div>
+
+          {error && <div className="error">{error}</div>}
 
           <div style={{marginTop:"2rem", marginLeft:"15.5rem", fontSize:"1.25rem"}}>
             Already registered? <Link to='/login'>Login</Link>
