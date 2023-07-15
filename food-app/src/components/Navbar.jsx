@@ -2,21 +2,29 @@ import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useLogout } from '../hooks/useLogout';
 import { useAuthContext } from '../hooks/useAuthContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
-import LoginPage from '../Pages/Login';
+import Badge from 'react-bootstrap/Badge';
+import { useContext } from 'react';
+import { Store } from './Store';
+
 
 function NAVbar() {
-  
+
+  const navigate = useNavigate();
+  const {state} = useContext(Store);
+  const {cart} = state;
+
   const {logout} = useLogout()
   const {user} = useAuthContext()
 
   const handleClick = () =>{
       logout()
       alert('You have been logged out!');
+      navigate('/home')
   }
 
   return (
@@ -41,7 +49,16 @@ function NAVbar() {
 
             {user && (
               <div style={{marginTop:"0.25rem", display:"flex"}}>
-                <Link><span style={{marginLeft:"1rem", color:"white", marginRight:"1.5rem"}} variant="outline-light"><FontAwesomeIcon style={{fontSize:"1.7rem", marginTop:"0.25rem"}} icon={faShoppingCart} /></span></Link>
+                <Link to='/cart'>
+                  <span style={{marginLeft:"1rem", color:"white", marginRight:"1.5rem"}} variant="outline-light">
+                    <FontAwesomeIcon style={{fontSize:"1.7rem", marginTop:"0.25rem"}} icon={faShoppingCart} /><Badge bg="light" text='dark'>
+                      {
+                        cart.cartItems.reduce((a,c)=> a + c.quantity, 0)
+                      }
+                    </Badge>
+                  </span>
+                  </Link>
+
                 <Button onClick={handleClick}  style={{marginLeft:"1rem"}} variant="outline-light">Logout</Button>
               </div>
             )}

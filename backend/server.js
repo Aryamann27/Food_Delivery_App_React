@@ -19,6 +19,9 @@ app.use('/api/menu', menuRoutes);
 const authRoutes = require('./routes/authRoutes');
 app.use('/api/auth', authRoutes);
 
+const diningRoutes = require('./routes/diningRoutes');
+app.use('/api/dining', diningRoutes);
+
 mongoose.connect(mongoURI)
 .then(()=>{
     //listen for requests

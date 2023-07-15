@@ -1,21 +1,41 @@
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import '../App.css'
-import { useItemsContext } from '../hooks/useItemsContext';
 import {default as Veg} from '../images/veg_icon.png'
 import {default as NonVeg} from '../images/nonVeg_icon.png'
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import { Store } from './Store';
+import { useNavigate } from 'react-router-dom';
+import { useAuthContext } from '../hooks/useAuthContext';
 
 function CardComp({item}) {
 
-  const {dispatch} = useItemsContext()
   const [isVeg, setIsVeg] = useState(true);
+  const navigate = useNavigate();
+
+  const {user} = useAuthContext();
+  const [isDisabled, setIsDisabled] = useState(true);
 
   useEffect(() => {
     if (item.deitCat === "Non-Veg") {
       setIsVeg(false);
     }
   }, [item.deitCat]);
+
+  useEffect(()=>{
+    if(user){
+      setIsDisabled(false);
+    }
+  }, [user])
+
+  const {state, dispatch:cxtDispatch} = useContext(Store);
+  const {cart} = state;
+  const handleAddToCart = () =>{
+    const existingItem = cart.cartItems.find((x)=>x._id===item._id);
+    const quantity = existingItem ? existingItem.quantity + 1 : 1;
+    cxtDispatch({type:'ADD_TO_CART', payload:{...item, quantity}});
+    navigate('/cart');
+  };
 
   return (
     <Card className='card items-card' style={{ width: '20rem'}}>
@@ -28,22 +48,13 @@ function CardComp({item}) {
           isVeg?(<img style={{width:"25px", height:"25px"}} src={Veg} />):(<img style={{width:"25px", height:"25px"}} src={NonVeg} />)
         }
         </div>
-        <p>
-        <select className='m-2 bg-light w-25 h-10 rounded'>
-            {
-                Array.from(Array(6), (e,i)=>{
-                    return(
-                        <option key={i+1} value={i+1}>{i+1}</option>
-                    )
-                })
-            }
-        </select>
-        </p>
 
         <p style={{fontSize:"1.25rem", fontWeight:"500"}}>
             Price : Rs.{item.price}
         </p>
-        <Button variant="primary">Add to Cart</Button>
+        <Button disabled={isDisabled} variant="primary" onClick={handleAddToCart}>
+          Add to Cart
+        </Button>
       </Card.Body>
     </Card>
   );

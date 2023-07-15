@@ -8,7 +8,7 @@ import {
 from 'mdb-react-ui-kit';
 import {default as Logo} from '../images/food-express-logo.png';
 import Button from 'react-bootstrap/Button';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useSignup } from '../hooks/useSignup';
 
 function SignupPage() {
@@ -16,7 +16,7 @@ function SignupPage() {
     const [email, setEmail] = useState(" ");
     const [password, setPassword] = useState("");
     const [name, setName] = useState(" ");
-    const [location, setLocation] = useState(" ");
+    const [location, setLocation] = useState(" ")
 
     const {signup, error, isLoading} = useSignup();
     

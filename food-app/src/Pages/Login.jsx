@@ -8,17 +8,19 @@ import {
 from 'mdb-react-ui-kit';
 import {default as Logo} from '../images/food-express-logo.png';
 import Button from 'react-bootstrap/Button';
-import { Link, json } from 'react-router-dom';
+import { Link, json, useNavigate } from 'react-router-dom';
 import { useLogin } from '../hooks/useLogin';
 
 function LoginPage() {
     
+  const navigate = useNavigate();
     const [email, setEmail] = useState(' ');
     const [password, setPassword] = useState('');
     const {login, error, isLoading} = useLogin();
 
     const handleLogin = async()=>{
         await login(email, password);
+        navigate('/delivery');
     };
 
   return (
