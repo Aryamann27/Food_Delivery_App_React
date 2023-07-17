@@ -95,3 +95,11 @@ Link:hover{
 .img-thumbnail{
   height: 80px;
 }
+
+.card-font{
+  font-family: 'Merriweather Sans', sans-serif;
+}
+
+th td{
+  border: none;
+}

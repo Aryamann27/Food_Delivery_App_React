@@ -7,17 +7,24 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { AuthContextProvider } from './context/AuthContext';
 import { ItemsContextProvider } from './context/ItemsContext';
 import { StoreProvider } from './components/Store';
+import { RestosContextProvider } from './context/restosContext';
+import { ReservationProvider } from './context/Reservation';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+    <ReservationProvider>
     <StoreProvider>
     <AuthContextProvider>
     <ItemsContextProvider>
+    <RestosContextProvider>
     <App />
+    </RestosContextProvider>
     </ItemsContextProvider>
     </AuthContextProvider>
     </StoreProvider>
+    </ReservationProvider>
   </React.StrictMode>
 );
 

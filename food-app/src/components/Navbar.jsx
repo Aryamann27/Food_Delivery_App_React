@@ -50,7 +50,7 @@ function NAVbar() {
             {user && (
               <div style={{marginTop:"0.25rem", display:"flex"}}>
                 <Link to='/cart'>
-                  <span style={{marginLeft:"1rem", color:"white", marginRight:"1.5rem"}} variant="outline-light">
+                  <span style={{marginLeft:"1rem", color:"white", marginRight:"1rem"}} variant="outline-light">
                     <FontAwesomeIcon style={{fontSize:"1.7rem", marginTop:"0.25rem"}} icon={faShoppingCart} /><Badge bg="light" text='dark'>
                       {
                         cart.cartItems.reduce((a,c)=> a + c.quantity, 0)
@@ -58,6 +58,10 @@ function NAVbar() {
                     </Badge>
                   </span>
                   </Link>
+
+                <Link to='/reservations'>
+                <Button style={{marginLeft:"1rem"}} variant="outline-light">Reservations</Button>
+                </Link>
 
                 <Button onClick={handleClick}  style={{marginLeft:"1rem"}} variant="outline-light">Logout</Button>
               </div>

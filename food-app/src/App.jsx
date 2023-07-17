@@ -9,6 +9,7 @@ import SignupPage from "./Pages/Signup";
 import Delivery from "./Pages/Delivery";
 import Dining from "./Pages/Dining";
 import Cart_Page from "./Pages/Cart_Page";
+import Reservation_Page from "./Pages/Reservation_Page";
 function App() {
   return (
     <Router>
@@ -22,6 +23,8 @@ function App() {
         <Route path='/delivery' element={<Delivery />} />
         <Route path='/dining' element={<Dining />} />
         <Route path='/cart' element={<Cart_Page />} />
+        <Route path="/reservations" element={<Reservation_Page/>}/>
+
       </Routes>
       <Footer />
       </div>

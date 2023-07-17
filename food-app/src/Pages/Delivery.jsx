@@ -3,10 +3,9 @@ import AlertComp from "../components/Alert";
 import { useAuthContext } from "../hooks/useAuthContext";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import Dropdown from 'react-bootstrap/Dropdown';
-import DropdownButton from 'react-bootstrap/DropdownButton';
 import { useItemsContext } from "../hooks/useItemsContext";
 import CardComp from "../components/Card";
+
 
 const Delivery = () =>{
     
@@ -35,16 +34,16 @@ const Delivery = () =>{
     };
 
     const filteredItems = items && items.filter((item)=>item.category===selectedCategory);
-
-
     
     
     return(
         <div>
              {!user &&(
-            <div className="login-alert" style={{marginTop:"1rem", marginLeft:"15rem", paddingRight:"15rem"}}><AlertComp /></div>)}
+            <div className="login-alert" style={{marginTop:"1rem", marginLeft:"15rem", paddingRight:"15rem"}}><AlertComp />
+            </div>)}
 
             <div style={{display:"flex", justifyContent:"center", marginTop:"2rem"}}>
+
             <Form className="d-flex">
             <Form.Control
               type="search"

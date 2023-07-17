@@ -38,7 +38,7 @@ function CardComp({item}) {
   };
 
   return (
-    <Card className='card items-card' style={{ width: '20rem'}}>
+    <Card className='card items-card card-font' style={{ width: '20rem'}}>
       <Card.Img style={{height:"250px", width:"100%"}} variant="top" src={item.imgUrl} />
       <Card.Body>
 

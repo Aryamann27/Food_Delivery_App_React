@@ -9,7 +9,7 @@ export const itemsReducer = (state, action) =>{
                 items:action.payload
             }
         default:
-            return state
+            return state;
     }
 }
 export const ItemsContextProvider = ({ children})=>{

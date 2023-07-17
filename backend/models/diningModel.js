@@ -1,6 +1,9 @@
 const mongoose = require('mongoose');
 
 const restoSchema = new mongoose.Schema({
+    _id:{
+        type:String
+    },
     name:{
         type:String,
         required:true
@@ -15,6 +18,10 @@ const restoSchema = new mongoose.Schema({
     },
     area:{
         type:String,
+        required:true
+    },
+    rating:{
+        type:Number,
         required:true
     },
     imgUrl:{
